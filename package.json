@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "devstart": "nodemon index.js"
+    "start": "nvm use 14.3.0; node index.js",
+    "devstart": "nvm use 14.3.0; nodemon index.js"
   },
   "author": "Cameron Bulock",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "dns-config": "github:cbulock/dns-config",
     "express": "^4.17.1",
@@ -21,6 +22,11 @@
     "sequelize": "^5.21.7"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.3"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=14.3.0"
   }
 }
