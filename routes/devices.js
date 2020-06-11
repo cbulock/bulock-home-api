@@ -36,17 +36,6 @@ router.get("/", function (req, res, next) {
 		],
 	}).then((devices) => {
 		devices.forEach((device) => {
-			// Check host online status
-			/* TODO: going to need a background process to retrieve this data
-			if (device.hostname) {
-				const nagiosUrl = `${nagiosHost}/nagios/cgi-bin/statusjson.cgi?query=host&formatoptions=enumerate&hostname=${device.hostname}`;
-				const response = await axios.get(nagiosUrl);
-				device.setDataValue(
-					"hostStatus",
-					response.data.data.host?.status
-				);
-			}
-			*/
 			// Check if hostnames are set to resolve properly
 			if (device.hostname) {
 				device.setDataValue(
@@ -81,6 +70,19 @@ router.get("/categories", function (req, res, next) {
 	Categories.findAll().then((categories) => {
 		res.json(categories);
 	});
+});
+
+router.get("/monitoring/:host", function (req, res, next) {
+	const { host } = req.params;
+	const nagiosUrl = `${nagiosHost}/nagios/cgi-bin/statusjson.cgi?query=host&formatoptions=enumerate&hostname=${host}`;
+	axios.get(nagiosUrl)
+		.then(function (response) {
+			res.json(response.data.data.host);
+		})
+		.catch(function (error) {
+			console.log(error);
+		}
+	);
 });
 
 router.get("/types", function (req, res, next) {
