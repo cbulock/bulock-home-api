@@ -11,7 +11,7 @@
   "author": "Cameron Bulock",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^0.28.0",
     "cors": "^2.8.5",
     "dns-config": "github:cbulock/dns-config",
     "express": "^4.18.2",
