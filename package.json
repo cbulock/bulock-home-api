@@ -16,7 +16,7 @@
     "dns-config": "github:cbulock/dns-config",
     "express": "^5.2.0",
     "hosts-parser": "^0.3.2",
-    "oui": "^11.0.21",
+    "oui": "^11.0.109",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.22.5"
